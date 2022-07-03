@@ -1,0 +1,29 @@
+// https://leetcode.com/problems/powx-n/
+class Solution {
+public:
+    double myPow(double x, int n) {
+        double y=1.0;
+        long long n1=n;
+        // if n1 is negative make it positive
+        if(n1<0)
+            n1=abs(n);
+        while(n1){
+            // if power is odd every time reduce
+            // like 4^5 = (4*(4^4))
+            if(n1%2==1){
+                y=y*x;
+                n1=n1-1;
+            }
+            // power is even multipy with same number and decrease power to half
+            // 16=(4*4)^2 = 2^4
+            else{
+                x=x*x;
+                n1=n1/2;
+            }
+        }
+        // check if power was negative then (1.0/value)
+        if(n<0)
+            y=(double)(1.0)/(double)(y);
+        return y;
+    }
+};
