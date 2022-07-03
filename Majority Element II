@@ -1,0 +1,17 @@
+// https://leetcode.com/problems/majority-element-ii/
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        int n=nums.size();
+        int x=n/3;
+        vector<int>v;map<int,int>mp;
+        for(auto it:nums){
+            mp[it]++;
+        }
+        for(auto it:mp){
+            if(it.second>x)
+                v.push_back(it.first);
+        }
+        return v;
+    }
+};
