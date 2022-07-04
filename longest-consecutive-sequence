@@ -1,0 +1,28 @@
+// https://leetcode.com/problems/longest-consecutive-sequence/submissions/
+class Solution {
+public:
+    int longestConsecutive(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        priority_queue<int,vector<int>,greater<int>>p;
+        set<int>s;int mxcnt=1,cnt=1;
+        for(auto it:nums)
+            s.insert(it);
+        for(auto it:s)
+            p.push(it);
+        
+        while(!p.empty()){
+            int prev=p.top();
+            p.pop();
+            int next=p.top();
+            if(next-prev==1){
+                cnt++;
+            }
+            else{
+                mxcnt=max(mxcnt,cnt);
+                cnt=1;
+            }
+        }
+        return mxcnt;
+    }
+};
