@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        
+        int a[256]={0};
+        int i=0,j=0;
+        int ans=0;
+        while(j<s.length()){
+            a[s[j]]++;
+            while(a[s[j]]>1){
+                a[s[i]]--;
+                i++;
+            }
+            ans=max(ans,j-i+1);
+            j++;
+        }
+        return ans;
+    }
+};
